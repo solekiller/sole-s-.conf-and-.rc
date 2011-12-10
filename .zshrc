@@ -15,7 +15,7 @@ SAVEHIST=1000
 # Variables
 #------------------------------
 export EDITOR="vim"
-export PAGER="vimpager"
+export PAGER="most"
 export PATH="${PATH}:${HOME}/bin:${HOME}/.gem/ruby/1.9.1/bin"
 
 #-----------------------------
