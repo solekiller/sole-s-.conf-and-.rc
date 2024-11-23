@@ -147,4 +147,4 @@ function download_blob {
 }
 alias vim="nvim"
 
-export PATH=/Users/jacob.kilimnik/.groundcover/bin:${PATH}
+export PATH=$HOME/.groundcover/bin:${PATH}
