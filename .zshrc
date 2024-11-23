@@ -148,17 +148,3 @@ function download_blob {
 alias vim="nvim"
 
 export PATH=/Users/jacob.kilimnik/.groundcover/bin:${PATH}
-alias brain='ssh brain@br.hpov.me'
-alias corpdis='ssh azureuser@52.170.112.184'
-alias dev_discovery='ssh azureuser@dev.discovery.hpov.me'
-alias local_brain='ssh brain@st-br.hpov.me'
-alias logs='ssh azureuser@discovery-logs.hpov.me'
-alias old_shadow='ssh -p 1745 batman@shadow.hpov.me'
-alias portscan='ssh -p 19238 porti@34.75.163.155'
-alias prod_shadow='ssh batman@prod.shadow.hpov.me'
-alias sdfinder='ssh azureuser@sd-finder.hpov.me'
-alias test_discovery='ssh azureuser@test.discovery.hpov.me'
-alias test_machine='ssh azureuser@40.117.93.218'
-alias test_shadow='ssh batman@test.shadow.hpov.me'
-alias test_verifier='ssh azureuser@20.25.11.69'
-alias verifier='ssh azureuser@40.88.12.202'
