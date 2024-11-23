@@ -1,145 +1,150 @@
-#------------------------------------------------------------------#
-# File: .zshrc ZSH resource file #
-# Version: 0.1.16 #
-# Author: Øyvind "Mr.Elendig" Heggstad <mrelendig@har-ikkje.net> #
-#------------------------------------------------------------------#
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-#------------------------------
-# History stuff
-#------------------------------
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-#------------------------------
-# Variables
-#------------------------------
-export EDITOR="vim"
-export PAGER="most"
-export PATH="${PATH}:${HOME}/bin:${HOME}/.gem/ruby/1.9.1/bin"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="agnoster"
 
-#-----------------------------
-# Dircolors
-#-----------------------------
-LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
-export LS_COLORS
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-#------------------------------
-# Keybindings
-#------------------------------
-bindkey -v
-typeset -g -A key
-#bindkey '\e[3~' delete-char
-bindkey '\e[1~' beginning-of-line
-bindkey '\e[4~' end-of-line
-#bindkey '\e[2~' overwrite-mode
-bindkey '^?' backward-delete-char
-bindkey '^[[1~' beginning-of-line
-bindkey '^[[5~' up-line-or-history
-bindkey '^[[3~' delete-char
-bindkey '^[[4~' end-of-line
-bindkey '^[[6~' down-line-or-history
-bindkey '^[[A' up-line-or-search
-bindkey '^[[D' backward-char
-bindkey '^[[B' down-line-or-search
-bindkey '^[[C' forward-char
-# for rxvt
-bindkey "\e[8~" end-of-line
-bindkey "\e[7~" beginning-of-line
-# for gnome-terminal
-bindkey "\eOH" beginning-of-line
-bindkey "\eOF" end-of-line
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-#------------------------------
-# Alias stuff
-#------------------------------
-alias ls="ls --color -F"
-alias ll="ls --color -lh"
-alias spm="sudo pacman"
-alias spmc="sudo pacman-color"
-alias S="screen"
-alias aur="clyde"
-alias irb="irb --simple-prompt"
-alias S=screen
-#------------------------------
-# Comp stuff
-#------------------------------
-zmodload zsh/complist
-autoload -Uz compinit
-compinit
-zstyle :compinstall filename '${HOME}/.zshrc'
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-#- buggy
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-#-/buggy
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-zstyle ':completion:*:pacman:*' force-list always
-zstyle ':completion:*:*:pacman:*' menu yes select
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
 
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:kill:*' force-list always
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-zstyle ':completion:*:*:killall:*' menu yes select
-zstyle ':completion:*:killall:*' force-list always
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-#------------------------------
-# Window title
-#------------------------------
-case $TERM in
-    *xterm*|rxvt|rxvt-unicode|rxvt-256color|(dt|k|E)term)
-precmd () { print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a" }
-preexec () { print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a" }
-;;
-    screen)
-     precmd () {
-print -Pn "\e]83;title \"$1\"\a"
-print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a"
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+git \
+kubectl \
+autoswitch_virtualenv
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(pyenv init --path)"
+export DAGSTER_HOME="${HOME}"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+function login_to_acr {
+	TOKEN=$(az acr login --name discoverycommon.azurecr.io --expose-token --output tsv --query accessToken);
+	docker login discoverycommon.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password-stdin <<< $TOKEN;
 }
-preexec () {
-print -Pn "\e]83;title \"$1\"\a"
-print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a"
+ 
+function upload_pip_package {
+  python3 setup.py sdist upload -r local
 }
-;;
-esac
-
-#------------------------------
-# Prompt
-#------------------------------
-setprompt () {
-# load some modules
-autoload -U colors zsh/terminfo # Used in the colour alias below
-colors
-setopt prompt_subst
-
-# make some aliases for the colours: (coud use normal escap.seq's too)
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-eval PR_$color='%{$fg[${(L)color}]%}'
-done
-PR_NO_COLOR="%{$terminfo[sgr0]%}"
-
-# Check the UID
-if [[ $UID -ge 1000 ]]; then # normal user
-eval PR_USER='${PR_GREEN}%n${PR_NO_COLOR}'
-eval PR_USER_OP='${PR_GREEN}%#${PR_NO_COLOR}'
-elif [[ $UID -eq 0 ]]; then # root
-eval PR_USER='${PR_RED}%n${PR_NO_COLOR}'
-eval PR_USER_OP='${PR_RED}%#${PR_NO_COLOR}'
-fi
-
-# Check if we are on SSH or not
-if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]; then
-eval PR_HOST='${PR_YELLOW}%M${PR_NO_COLOR}' #SSH
-else
-eval PR_HOST='${PR_GREEN}%M${PR_NO_COLOR}' # no SSH
-fi
-# set the prompt
-PS1=$'${PR_CYAN}[${PR_USER}${PR_CYAN}@${PR_HOST}${PR_CYAN}][${PR_BLUE}%~${PR_CYAN}]${PR_USER_OP} '
-PS2=$'%_>'
+function zlib_cat {
+ local filename=$1;
+ cat $filename |zlib-flate -uncompress
 }
-setprompt
+function list_blob_names {
+	local account=$1;
+        local container=$2;
+	if [ -z $account ];then
+           echo "missing account";
+	   return 1;
+	fi
+        if [ -z $container ];then
+          echo "missing container";
+          echo "./$0 account container";
+          return 1;
+        fi
+	az storage blob list --auth-mode login --account-name $account --container-name $container |jq '.[].name'
+}
+function download_blob {
+	local account=$1;
+	local container=$2;
+	local remote_blob=$3;
+	local local_file=$4;
 
+        az storage blob download --container-name $container --account-name $account --name "$remote_blob" --file "$local_file" --auth-mode login
+}
+alias vim="nvim"
 
-export TERM="xterm-256color"
+export PATH=$HOME/.groundcover/bin:${PATH}
